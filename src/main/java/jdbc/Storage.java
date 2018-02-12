@@ -1,49 +1,33 @@
 package jdbc;
 
-
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
-
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Storage {
+    private String connectionURL = "jdbc:mysql://localhost:3306/dbdz?useSSL=false";
+    private String user = "root";
+    private String password = "root";
 
-    private static String URL = "jdbc:mysql://localhost:3306/dbdz?useSSL=false";
-    private static String user = "root";
-    private static String password = "root";
+    private Connection connection;
+    private Statement statement;
 
-    public static void main(String[] args) throws SQLException {
-        Connection connection = null;
-        Driver driver;
+    private PreparedStatement selectSt;
+    private PreparedStatement updateSt;
 
-        try{
-            driver = new FabricMySQLDriver();
-        }
-        catch (SQLException e){
-         System.out.println("Error when creating the driver");
-         return;
+    public Storage() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (Exception e) {
         }
 
         try {
-            DriverManager.registerDriver(driver);
+            connection = DriverManager.getConnection(connectionURL, user, password);
+            statement = connection.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        catch (SQLException e){
-            System.out.println("Driver failed to register");
-            return;
-        }
+    }
 
-        try {
-            connection = DriverManager.getConnection(URL, user, password);
-            System.out.println("code");
-        }
-        catch (SQLException e){
-            System.out.println("Driver failed to register");
-        }
-        finally {
-            if(connection != null)
-                connection.close();
-        }
+    public static void main(String[] args) {
+        Storage storage = new Storage();
     }
 }
