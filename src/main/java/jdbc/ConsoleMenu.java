@@ -63,7 +63,7 @@ public class ConsoleMenu {
             String devGend = scanner.nextLine();
             System.out.println("Enter the developer's salary");
             int devSalary = scanner.nextInt();
-            storage.addNewDeveloper(devFirstName, devLastName, devAge, devGend, devSalary);
+            storage.addNewDeveloper(devName, devSecName, devAge, devGend, devSalary);
         }
         if (choice == 4) {
             System.out.println("Enter the name of the customer");
@@ -150,7 +150,7 @@ public class ConsoleMenu {
             String devGend = scanner.nextLine();
             System.out.println("Enter a new developer salary");
             int devSalary = scanner.nextInt();
-            storage.updateDeveloper(devFirstName, devLastName, devAge, devGend, devSalary, devId);
+            storage.updateDeveloper(devName, devSecName, devAge, devGend, devSalary, devId);
         }
         if (choice == 3) {
             System.out.println("Enter Id customer");
@@ -221,6 +221,4 @@ public class ConsoleMenu {
         System.out.println("Good luck");
 
     }
-
-
 }

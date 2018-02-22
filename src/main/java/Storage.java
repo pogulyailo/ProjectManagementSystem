@@ -30,10 +30,10 @@ public class Storage {
     public static void main(String[] args) {
         Storage storage = new Storage();
 
-        //storage.startMenu(storage);
-        //storage.addNewTable(new);
-        //storage.addNewDeveloper("TestFirstName", "TestLastName" , 50, "Male" , 1000);
-        //storage.addNewProject("newTestProject", "test1", 1000);
-        //storage.addNewCustomer("Customer", privat);
+
+        storage.addNewTable();
+        storage.addNewDeveloper("TestFirstName", "TestLastName" , 50, "Male" , 1000);
+        storage.addNewProject("newTestProject", "test1", 1000);
+        storage.addNewCustomer("Customer", privat);
     }
 }
